@@ -1,9 +1,4 @@
-<?php
-session_start();
-if (!isset($_SESSION['user'])) {
-	header("Location:login.php");
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,13 +11,14 @@ if (!isset($_SESSION['user'])) {
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
 </head>
 <body>
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
       <a id="logo-container" href="#" class="brand-logo"><img height="63 px;" src="img/manvector.png"/> </a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="close.php">Cerrar sesion</a></li>
+        
       </ul>
     </div>
   </nav>
@@ -55,7 +51,7 @@ if (!isset($_SESSION['user'])) {
         <div class="#ffffff white">
             
             
-            <table class="responsive-table bordered">
+            <table class="responsive-table bordered" id="tablajson">
         <thead>
           <tr class="black-text">
               
@@ -79,7 +75,7 @@ if (!isset($_SESSION['user'])) {
             <td><?php  echo $row['telefono']; ?></td>
             <td><?php  echo $row['extencion']; ?></td>
             <td><?php  echo $row['celular']; ?></td>
-            <td><?php  echo strtolower($row['Correo']);  ?></td>
+            <td><a href="mailto:<?php echo $row['Correo']; ?>"> <?php  echo strtolower($row['Correo']);  ?></a></td>
             
             
           </tr>
@@ -88,7 +84,35 @@ if (!isset($_SESSION['user'])) {
             ?>
         </tbody>
       </table>
-           
+           <script id="source" language="javascript" type="text/javascript">
+               document.querySelector("#search").onkeyup = function(){
+        $TableFilter("#tablajson", this.value);
+    }
+    
+    $TableFilter = function(id, value){
+        var rows = document.querySelectorAll(id + ' tbody tr');
+        
+        for(var i = 0; i < rows.length; i++){
+            var showRow = false;
+            
+            var row = rows[i];
+            row.style.display = 'none';
+            
+            for(var x = 0; x < row.childElementCount; x++){
+                if(row.children[x].textContent.toLowerCase().indexOf(value.toLowerCase().trim()) > -1){
+                    showRow = true;
+                    break;
+                }
+            }
+            
+            if(showRow){
+                row.style.display = null;
+            }
+        }
+    } 
+
+
+  </script>
           </div>
 <div class="row">
                 <div class="input-field col s12">
@@ -128,7 +152,6 @@ if (!isset($_SESSION['user'])) {
       </div>
     </div>
       </footer>
-      </div>
 
 
 

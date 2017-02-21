@@ -1,9 +1,4 @@
-<?php
-session_start();
-if (!isset($_SESSION['user'])) {
-	header("Location:login.php");
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,15 +16,12 @@ if (!isset($_SESSION['user'])) {
     <div class="nav-wrapper container">
       <a id="logo-container" href="#" class="brand-logo"><img height="63 px;" src="img/manvector.png"/> </a>
       <ul class="right hide-on-med-and-down">
-          <li><a href="index.php"><i class="material-icons left">perm_identity</i>Menu</a></li>
-        <li><a href="nuevousuario.php"><i class="material-icons left">add</i>Agregar nuevo usuario</a></li>
-        <li><a href="close.php">Cerrar sesion</a></li>
       </ul>
     </div>
   </nav>
 <?php
         require("connection.php");
-            $name=$_POST['search'];
+            $name=$_GET['search'];
         $sql="SELECT * FROM usuario WHERE usuario.Nombre LIKE '%$name%'";
         $resultado = mysqli_query($link,$sql) or die(mysql_error());
         //$row2 = mysqli_fetch_array($resultado);

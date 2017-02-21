@@ -1,4 +1,9 @@
-
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+	header("Location:login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +19,7 @@
 <body>
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">Logo</a>
+      <a id="logo-container" href="#" class="brand-logo"><img height="63 px;" src="img/manvector.png"/> </a>
       <ul class="right hide-on-med-and-down">
           <li><a href="admin.php"><i class="material-icons left">perm_identity</i>Menu admin</a></li>
         <li><a href="nuevousuario.php"><i class="material-icons left">add</i>Agregar nuevo usuario</a></li>
@@ -24,52 +29,25 @@
   </nav>
 <?php
         require("connection.php");
-           // $name=$_POST['search'];
+            $name=$_POST['search'];
         $sql="SELECT * FROM usuario WHERE usuario.Nombre LIKE '%$name%'";
         $resultado = mysqli_query($link,$sql) or die(mysql_error());
         //$row2 = mysqli_fetch_array($resultado);
         ?>
-    <main>
   <div id="index-banner" class="parallax-container">
+    
         <div class="row">
       <div class="col s12">
           <h3 class="black-text , center-align">Bienvenido al directorio de MAN</h3>
         <div class="#ffffff white">
-            <table>
-        <thead class="black-text">
-          <tr>
-              <th data-field="id">Name</th>
-              <th data-field="name">Item Name</th>
-              <th data-field="price">Item Price</th>
-          </tr>
-        </thead>
-
-        <tbody class="black-text">
-          <tr>
-            <td>Alvin creador y salador qu siempre falta a lacas comidad y nunca lleva nada porque es mala onda y no entienbde mierdads asi</td>
-            <td>Eclairtttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt</td>
-            <td>$0.87</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
-        </tbody>
-      </table>
+            
           </div>
       </div>
     </div>
     <div class="parallax"><img src="img/realback.jpg" alt="Unsplashed background img 1"></div>
         </div>
-
-    </main>
-
+  
+ 
   <footer class="page-footer teal">
     <div >
       <div class="row">
@@ -78,7 +56,7 @@
           <p class="grey-text text-lighten-4">Bienvenidos a el directorio de MAN que está diseñado para hacer más fácil e buscar gente y
             por el cual estamos muy contentos esperamos que les agrade tanto como a nosotros
             cualquier comentario referente a este hablar con el equipo de IT</p>
-            <p class="grey-text text-lighten-4">Ver 0.3 beta</p>
+            
         </div>
         <div class="col l6 s12">
           <h5 class="white-text">Otros sitios</h5>
@@ -88,10 +66,16 @@
         </div>
       </div>
     </div>
+      <div class="footer-copyright">
+            <div class="container">
+            Ver 0.7 beta
+            <a class="grey-text text-lighten-4 right" href="#!"></a>
+            </div>
+          </div>
       </footer>
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
- </body>
+    <script src="js/init.js"></script> 
+    </body>
 </html>

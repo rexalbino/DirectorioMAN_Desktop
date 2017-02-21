@@ -4,6 +4,7 @@ if (!isset($_SESSION['user'])) {
 	header("Location:login.php");
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +51,7 @@ if (!isset($_SESSION['user'])) {
   <div id="index-banner" class="parallax-container">
     
         <div class="row">
-      <div class="col s12">
+      <div class="col s12 m9 l12">
           <h3 class="black-text , center-align">Bienvenido al directorio MTB MAN</h3>
         <div class="#ffffff white">
             
@@ -63,11 +64,11 @@ if (!isset($_SESSION['user'])) {
               <th data-field="id">Nombre</th>
               <th data-field="name">Area</th>
               <th data-field="phone">Telefono</th>
-              <th data-field="cel">Ext.</th>
-              <th data-field="mail">Celular</th>
+              <th data-field="ext">Ext.</th>
+              <th data-field="cel">Celular</th>
               <th data-field="mail">Email</th>
-              <th data-field="mail">Editar</th>
-              <th data-field="mail">Eliminar</th>
+              <th data-field="edit">Editar</th>
+              <th data-field="delete">Eliminar</th>
           </tr>
         </thead>
 

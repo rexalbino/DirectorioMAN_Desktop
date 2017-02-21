@@ -39,7 +39,6 @@ if (@!$_SESSION['user']) {
         $resultado = mysqli_query($link,$sql) or die(mysql_error());
         ?>
   <div class="parallax-container">
-    <div class="section no-pad-bot">
       <div class="container">
           <h3 class="black-text , center-align">Bienvenido al directorio de MAN</h3>
         <div class="#ffffff white">
@@ -162,8 +161,7 @@ if (@!$_SESSION['user']) {
           <p class="grey-text text-lighten-4">Bienvenidos a el directorio de MAN que está diseñado para hacer más fácil e buscar gente y
             por el cual estamos muy contentos esperamos que les agrade tanto como a nosotros
             cualquier comentario referente a este hablar con el equipo de IT</p>
-            <p class="grey-text text-lighten-4">Ver 0.5 beta</p>
-
+            
         </div>
        
         <div class="col l6 s12">
@@ -175,6 +173,12 @@ if (@!$_SESSION['user']) {
         </div>
       </div>
     </div>
+        <div class="footer-copyright">
+            <div class="container">
+            Ver 0.7 beta
+            <a class="grey-text text-lighten-4 right" href="#!"></a>
+            </div>
+          </div>
       </footer>
 
 

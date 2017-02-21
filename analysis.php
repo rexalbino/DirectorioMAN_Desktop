@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-  <title>Directorio MAN</title>
+  <title>MAN shop</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -19,7 +19,7 @@
             $user=$_GET['uname'];
             $pass=$_GET['pass'];
         
-            $sql="SELECT * FROM login WHERE alias='$user' and password='$pass'";
+            $sql="SELECT * FROM `login` WHERE `alias` = '$user' and password ='$pass'";
         
             $resultado = mysqli_query($link,$sql) or die(mysql_error());
             $row = mysqli_fetch_array($resultado);
@@ -29,13 +29,17 @@
                 {
                     $_SESSION['user']=$row['alias'];
                     $_SESSION['pass']=$row['password'];
+                    $_SESSION['id']=$row['id_usuario'];
+                    
 				    echo "<script language=javaScript>window.location='admin.php'</script>";
 			        
                 }
             elseif($row['admin'] == 0){
-                    $_SESSION['user']=$row['alias'];
+                    $_SESSION['user']=$row['Nombre'];
                     $_SESSION['pass']=$row['password'];
-                    echo "<script language=javaScript>window.location='index.php'</script>";
+                    $_SESSION['id']=$row['id_usuario'];
+                   
+                    echo "<script language=javaScript>window.location='admin.php'</script>";
             }else{
                 echo "<script language=javaScript>alert('Usuario no valido!');</script>";
                 echo "<script language=javaScript>window.location='login.php'</script>";
